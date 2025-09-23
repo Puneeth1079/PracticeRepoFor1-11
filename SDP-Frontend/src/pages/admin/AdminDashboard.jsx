@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import api from '../../services/api'; // 👈 Updated import
-
+// admin manages both managers and customers
 export default function AdminDashboard() {
   const [counts, setCounts] = useState({ customers: 0, managers: 0 });
   

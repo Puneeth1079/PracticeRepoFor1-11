@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api'; // 👈 Updated import
-
+//manaagers manager like add,delete
 export default function ManageManagers() {
     const [managers, setManagers] = useState([]);
     const [showAddForm, setShowAddForm] = useState(false);

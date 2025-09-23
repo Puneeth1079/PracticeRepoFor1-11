@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api'; // 👈 Updated import
-
+//can do view all 
 export default function ManageCustomers() {
     const [customers, setCustomers] = useState([]);
 

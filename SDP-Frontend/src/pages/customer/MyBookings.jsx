@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../services/api';
-
+//This page can execute the customer booking functions
 export default function MyBookings() {
     const [bookings, setBookings] = useState([]);
     const { user } = useAuth();

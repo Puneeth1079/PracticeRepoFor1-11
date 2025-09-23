@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../services/api';
-
+//Execute the view & updation of the profile
 export default function Profile() {
     const { user, login } = useAuth(); // get login function to update context
     const [formData, setFormData] = useState({ ...user });

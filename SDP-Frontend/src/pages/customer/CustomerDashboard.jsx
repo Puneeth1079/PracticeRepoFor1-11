@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 
 export default function CustomerDashboard() {
   const { user } = useAuth();
-
+//This is Customer Dashboard
   return (
     <div className="dashboard-container">
       <h2 className="dashboard-heading">Welcome, {user.name}!</h2>

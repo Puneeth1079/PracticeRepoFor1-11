@@ -9,14 +9,6 @@ services:
       - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    networks:
-      - springboot-react-network
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pdocker"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   backend:
     container_name: springboot
@@ -26,11 +18,8 @@ services:
     ports:
       - "2025:2000"
     depends_on:
-      mysqldb:
-        condition: service_healthy
+      - mysqldb
     restart: on-failure
-    networks:
-      - springboot-react-network
 
   frontend:
     container_name: react
@@ -41,14 +30,7 @@ services:
       - "3000:80"
     depends_on:
       - backend
-    networks:
-      - springboot-react-network
 
 # Declare volumes
 volumes:
   mysql-data:
-
-# Define custom bridge network
-networks:
-  springboot-react-network:
-    driver: bridge

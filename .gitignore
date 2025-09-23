@@ -1,0 +1,44 @@
+# ===== Java / Maven =====
+target/
+*.class
+*.log
+
+# ===== Spring Boot (don’t push packaged files) =====
+*.jar
+*.war
+*.ear
+
+# ===== Node / Vite (React Frontend) =====
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ===== IDE / OS =====
+.metadata/
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# ===== Secrets / Config (keep .env tracked) =====
+application-*.yml
+application-*.properties
+
+# ===== Archives & Large Binaries =====
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.bak
+*.old
+
+# ===== Docker (exclude unnecessary) =====
+*.pid
+docker-compose.override.yml

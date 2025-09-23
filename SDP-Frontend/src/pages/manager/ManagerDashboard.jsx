@@ -1,5 +1,5 @@
 import React from 'react';
-
+//Executes the manager dashboard contains the room managing functions
 export default function ManagerDashboard() {
   return (
     <div className="dashboard-container">

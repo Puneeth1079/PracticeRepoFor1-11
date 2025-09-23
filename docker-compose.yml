@@ -3,7 +3,7 @@ services:
     container_name: mysql-db
     image: mysql:8
     environment:
-      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: hotelhub
     ports:
       - "3307:3306"

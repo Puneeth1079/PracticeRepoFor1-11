@@ -9,28 +9,43 @@ services:
       - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - springboot-react-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-padmin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   backend:
     container_name: springboot
     build:
       context: ./SDP-Backend
-      dockerfile: C:\Users\PUNEETH\Desktop\New SDP Project\SDP - Project\SDP-FULLSTACK\backend.Dockerfile
+      dockerfile: ../SDP-FULLSTACK/backend.Dockerfile   # relative to context
     ports:
       - "2025:2000"
     depends_on:
       - mysqldb
     restart: on-failure
+    networks:
+      - springboot-react-network
 
   frontend:
     container_name: react
     build:
-      context: ./SDP-Frontend
-      dockerfile: C:\Users\PUNEETH\Desktop\New SDP Project\SDP - Project\SDP-FULLSTACK\frontend.Dockerfile
+      context: .                                       # <— project root as context
+      dockerfile: ./SDP-FULLSTACK/frontend.Dockerfile  # path from root to Dockerfile
     ports:
       - "3000:80"
     depends_on:
       - backend
+    networks:
+      - springboot-react-network
 
-# Declare volumes
 volumes:
   mysql-data:
+
+networks:
+  springboot-react-network:
+    driver: bridge

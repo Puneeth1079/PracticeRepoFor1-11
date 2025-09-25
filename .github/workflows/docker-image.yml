@@ -1,4 +1,4 @@
-name: SDP Docker CI 
+name: Docker Fullstack CI
 
 on:
   push:
@@ -26,15 +26,19 @@ jobs:
       - name: Build and push backend image
         uses: docker/build-push-action@v5
         with:
+          # Context is the directory of your backend source code
           context: ./SDP-Backend
-          file: ../SDP-FULLSTACK/backend.Dockerfile
+          # The file path is relative to the repository root
+          file: ./SDP-FULLSTACK/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/sdp-backend:latest
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
         with:
+          # Context is the root directory, containing your frontend source code
           context: .
+          # The file path is relative to the repository root
           file: ./SDP-FULLSTACK/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/sdp-frontend:latest

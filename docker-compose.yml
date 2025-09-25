@@ -19,6 +19,7 @@ services:
       start_period: 30s
 
   backend:
+    image: puneeth1079/sdp-backend:latest
     container_name: springboot
     build:
       context: ./SDP-Backend
@@ -32,6 +33,7 @@ services:
       - springboot-react-network
 
   frontend:
+    image: puneeth1079/sdp-frontend:latest
     container_name: react
     build:
       context: .                                       # <— project root as context
